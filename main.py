@@ -9,7 +9,7 @@ import mylogger
 
 from PIL import Image, ImageDraw
 from pystray import Icon, Menu, MenuItem
-
+from tendo import singleton
 
 def alert_basic(message):
     ctypes.windll.user32.MessageBoxW(None, message, "Nosleep My Drive", 0)
@@ -48,6 +48,8 @@ MAX_RETRY_CONT = 5
 RETRY_INTERVAL = 60
 
 if __name__ == "__main__":
+    me = singleton.SingleInstance()
+
     logger.info("프로세스 시작")
     # pystray 관련 시작
     myimage = Image.open("icon.png")
